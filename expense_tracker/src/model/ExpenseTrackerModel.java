@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ExpenseTrackerModel {
 
@@ -21,8 +22,8 @@ public class ExpenseTrackerModel {
     transactions.add(t);
   }
 
-  public void removeTransaction(Transaction t) {
-    transactions.remove(t);
+  public void removeTransaction(int id) {
+    transactions = transactions.stream().filter(tr->tr.getId()!=id).collect(Collectors.toList());
   }
 
   public List<Transaction> getTransactions() {
