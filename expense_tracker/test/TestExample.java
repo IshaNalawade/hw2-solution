@@ -90,7 +90,7 @@ public class TestExample {
         // Perform the action: Add and remove a transaction
 	double amount = 50.0;
 	String category = "food";
-        Transaction addedTransaction = new Transaction(amount, category);
+        Transaction addedTransaction = new Transaction(amount, category,2);
         model.addTransaction(addedTransaction);
     
         // Pre-condition: List of transactions contains only
@@ -102,7 +102,7 @@ public class TestExample {
 	assertEquals(amount, getTotalCost(), 0.01);
 	
 	// Perform the action: Remove the transaction
-        model.removeTransaction(addedTransaction);
+        model.removeTransaction(addedTransaction.getId());
     
         // Post-condition: List of transactions is empty
         List<Transaction> transactions = model.getTransactions();
