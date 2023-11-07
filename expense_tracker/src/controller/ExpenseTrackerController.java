@@ -4,6 +4,7 @@ import view.ExpenseTrackerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.swing.JOptionPane;
 
@@ -15,6 +16,7 @@ public class ExpenseTrackerController {
   
   private ExpenseTrackerModel model;
   private ExpenseTrackerView view;
+  private int id =1;
   /** 
    * The Controller is applying the Strategy design pattern.
    * This is the has-a relationship with the Strategy class 
@@ -45,11 +47,21 @@ public class ExpenseTrackerController {
       return false;
     }
     
-    Transaction t = new Transaction(amount, category);
+    Transaction t = new Transaction(amount, category, id++);
     model.addTransaction(t);
     view.getTableModel().addRow(new Object[]{t.getAmount(), t.getCategory(), t.getTimestamp()});
     refresh();
     return true;
+  }
+
+  public void undoTransaction(List<Transaction> transactions) {
+    if(Objects.isNull(transactions)){
+      return;
+    }
+    for(Transaction t : transactions){
+      model.removeTransaction(t.getId());
+    }
+    refresh();
   }
 
   public void applyFilter() {
