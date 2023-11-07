@@ -14,8 +14,9 @@ public class Transaction {
   private final double amount;
   private final String category;
   private final String timestamp;
+  private final int id;
 
-  public Transaction(double amount, String category) {
+  public Transaction(double amount, String category, int id) {
     // Since this is a public constructor, perform input validation
     // to guarantee that the amount and category are both valid
     if (InputValidation.isValidAmount(amount) == false) {
@@ -28,6 +29,7 @@ public class Transaction {
     this.amount = amount;
     this.category = category;
     this.timestamp = generateTimestamp();
+    this.id = id;
   }
 
   public double getAmount() {
@@ -53,6 +55,10 @@ public class Transaction {
   //private helper method to generate timestamp
   private String generateTimestamp() {
      return dateFormatter.format(new Date());
+  }
+
+  public int getId() {
+    return id;
   }
 
 }
