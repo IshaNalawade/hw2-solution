@@ -72,10 +72,12 @@ public class ExpenseTrackerApp {
     view.toFront();
    }});
 
-
+    // Action Listener to the "Undo Transaction" button
     view.getUndoTransactionBtn().addActionListener(e -> {
-        int[] selectedRows = view.getTransactionsTable().getSelectedRows();
+        int[] selectedRows = view.getRows();
         List<Transaction> transactionsToDelete = new ArrayList<>();
+
+        // Confirm undo transaction action
         int dialogResult = JOptionPane.showConfirmDialog(null,
                   "Are you sure you want to delete the selected transactions?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
         if (dialogResult == JOptionPane. YES_OPTION) {
@@ -88,7 +90,21 @@ public class ExpenseTrackerApp {
             controller.undoTransaction(transactionsToDelete);
         }
     });
-    
+
+      // Add Action listener on table to enable undo button when rows are selected
+      view.getTransactionsTable().getSelectionModel().addListSelectionListener(e->  {
+          int rowCount = view.getTransactionsTable().getRowCount();
+          int[] selectedRows = view.getRows();
+          // Check if any rows are selected
+          if(!e.getValueIsAdjusting() && view.getTransactionsTable().getSelectedRowCount() > 0 && !(selectedRows[selectedRows.length - 1] == rowCount - 1)) {
+              view.getUndoTransactionBtn().setEnabled(true);
+          } else {
+              view.getUndoTransactionBtn().setEnabled(false);
+          }
+      });
+
+
+
 
   }
 }
