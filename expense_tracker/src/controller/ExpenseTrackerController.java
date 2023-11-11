@@ -55,6 +55,7 @@ public class ExpenseTrackerController {
   }
 
   public void undoTransaction(List<Transaction> transactions) {
+    removeFilter();
     if(Objects.isNull(transactions)){
       return;
     }
@@ -84,4 +85,14 @@ public class ExpenseTrackerController {
       view.toFront();}
 
   }
+
+  public void removeFilter() {
+    //null check for filter
+    List<Transaction> transactions = model.getTransactions();
+    view.refreshHighlightRows(transactions);
+
+  }
+
+
+
 }
