@@ -32,7 +32,8 @@ public class ExpenseTrackerApp {
       // Get transaction data from view
       double amount = view.getAmountField();
       String category = view.getCategoryField();
-      
+
+      view.refreshHighlightRows();
       // Call controller to add transaction
       boolean added = controller.addTransaction(amount, category);
       
@@ -76,7 +77,7 @@ public class ExpenseTrackerApp {
     view.getUndoTransactionBtn().addActionListener(e -> {
         int[] selectedRows = view.getRows();
         List<Transaction> transactionsToDelete = new ArrayList<>();
-
+        view.refreshHighlightRows();
         // Confirm undo transaction action
         int dialogResult = JOptionPane.showConfirmDialog(null,
                   "Are you sure you want to delete the selected transactions?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
@@ -93,6 +94,7 @@ public class ExpenseTrackerApp {
 
       // Add Action listener on table to enable undo button when rows are selected
       view.getTransactionsTable().getSelectionModel().addListSelectionListener(e->  {
+
           int rowCount = view.getTransactionsTable().getRowCount();
           int[] selectedRows = view.getRows();
           // Check if any rows are selected

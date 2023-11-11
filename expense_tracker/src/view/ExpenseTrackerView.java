@@ -191,7 +191,7 @@ public class ExpenseTrackerView extends JFrame {
 
   public void highlightRows(List<Integer> rowIndexes) {
       // The row indices are being used as hashcodes for the transactions.
-      // The row index directly maps to the the transaction index in the list.
+      // The row index directly maps to  the transaction index in the list.
       transactionsTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
           @Override
           public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
@@ -200,7 +200,7 @@ public class ExpenseTrackerView extends JFrame {
               if (rowIndexes.contains(row)) {
                   c.setBackground(new Color(173, 255, 168)); // Light green
               } else {
-                  c.setBackground(table.getBackground());
+                  if(!isSelected) c.setBackground(table.getBackground());
               }
               return c;
           }
@@ -208,15 +208,17 @@ public class ExpenseTrackerView extends JFrame {
       transactionsTable.repaint();
   }
 
-    public void refreshHighlightRows(List<Transaction> transactions) {
+    public void refreshHighlightRows() {
         // The row indices are being used as hashcodes for the transactions.
-        // The row index directly maps to the the transaction index in the list.
+        // The row index directly maps to the transaction index in the list.
         transactionsTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
                                                            boolean hasFocus, int row, int column) {
                 Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                c.setBackground(table.getBackground());
+                if (!isSelected) {
+                    c.setBackground(table.getBackground());
+                }
                 return c;
             }
         });
