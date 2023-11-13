@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.text.ParseException;
 
+import model.Filter.AmountFilter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -111,6 +112,28 @@ public class TestExample {
         // Check the total cost after removing the transaction
         double totalCost = getTotalCost();
         assertEquals(0.00, totalCost, 0.01);
+    }
+
+    @Test
+    public void testFilterByAmount() {
+
+        // Add multiple transactions with different amounts
+        controller.addTransaction(50.0, "food");
+        controller.addTransaction(30.0, "travel");
+        controller.addTransaction(75.0, "entertainment");
+        controller.addTransaction(30.0, "food");
+
+
+        // using Filter class
+        double filterAmount = 30.0;
+        AmountFilter amountFilter = new AmountFilter(filterAmount);
+        List<Transaction> filteredTransactions = amountFilter.filter(model.getTransactions());
+        // Post-condition: List of transactions contains only the filtered transactions with filter amount 30
+        assertEquals(2, filteredTransactions.size());
+        // Check the contents of the list
+        for (Transaction t : filteredTransactions) {
+            assertEquals(30.0, t.getAmount(), 0.01);
+        }
     }
     
 }
