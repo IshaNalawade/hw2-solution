@@ -220,7 +220,7 @@ public class TestExample {
         assertEquals(amountBefore+50.0, amountAfter, 0.0);
 
         // Post-condition: A new transaction is added
-        assertEquals(2, view.getTableModel().getRowCount());  //row count is 2 as there is an extra row that shows the total of the table
+        assertEquals(2, view.getTableModel().getRowCount());  //rowcount is 2 as there is an extra row that shows the total of the table
 
         assertEquals(50.0, view.getTransactionsTable().getValueAt(0,1)); //Checking amount
         assertEquals("food", view.getTransactionsTable().getValueAt(0,2)); //Checking Category
