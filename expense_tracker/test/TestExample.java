@@ -8,6 +8,7 @@ import java.util.List;
 import java.text.ParseException;
 
 import model.Filter.AmountFilter;
+import model.Filter.CategoryFilter;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -133,6 +134,28 @@ public class TestExample {
         // Check the contents of the list
         for (Transaction t : filteredTransactions) {
             assertEquals(30.0, t.getAmount(), 0.01);
+        }
+    }
+
+    @Test
+    public void testFilterByCategory() {
+
+        // Add multiple transactions with different categories
+        controller.addTransaction(30.0, "travel");
+        controller.addTransaction(50.0, "food");
+        controller.addTransaction(90.0, "travel");
+        controller.addTransaction(75.0, "entertainment");
+        controller.addTransaction(45.0, "travel");
+
+        // Apply filter using Filter class for category
+        String filterCategory = "travel";
+        CategoryFilter categoryFilter = new CategoryFilter(filterCategory);
+        List<Transaction> filteredTransactions = categoryFilter.filter(model.getTransactions());
+
+        // Post-condition: List of transactions contains only the filtered transactions with filter category travel
+        assertEquals(3, filteredTransactions.size());
+        for (Transaction t : filteredTransactions) {
+            assertEquals("travel", t.getCategory());
         }
     }
     
