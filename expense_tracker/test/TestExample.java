@@ -1,7 +1,4 @@
 // package test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 import java.util.List;
@@ -16,6 +13,10 @@ import controller.ExpenseTrackerController;
 import model.ExpenseTrackerModel;
 import model.Transaction;
 import view.ExpenseTrackerView;
+
+import javax.swing.*;
+
+import static org.junit.Assert.*;
 
 
 public class TestExample {
@@ -157,6 +158,22 @@ public class TestExample {
         for (Transaction t : filteredTransactions) {
             assertEquals("travel", t.getCategory());
         }
+    }
+
+    @Test
+    public void testUndoDisallowed() {
+        // Pre-condition: List of transactions is empty
+        assertEquals(0, model.getTransactions().size());
+
+        // Attempt to undo when the transactions list is empty
+        view.getUndoTransactionBtn().doClick(); // Simulating a button click
+
+        // Post-condition: List of transactions remains empty
+        assertEquals(0, model.getTransactions().size());
+
+        // Check the state of the UI widget (undo button)
+        JButton undoButton = view.getUndoTransactionBtn();
+        assertFalse("Undo button should be disabled when transactions list is empty", undoButton.isEnabled());
     }
     
 }
