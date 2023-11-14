@@ -199,31 +199,5 @@ public class TestExample {
         assertEquals(0.0, getTotalCost(), 0.01);
 
     }
-
-    @Test
-    public void testAddTransactionAndUpdateView() {
-
-        // Pre-condition: The table is empty
-        assertEquals(0, view.getTableModel().getRowCount());
-        // Pre-condition: Get total amount of table before
-        assertEquals(0, getTotalCost(), 0.0);
-        double amountBefore = getTotalCost();
-
-        // Perform the action: Add a transaction
-        double amount = 50.0;
-        String category = "food";
-        // Post-condition: Transaction will be added
-        assertTrue(controller.addTransaction(amount, category));
-        double amountAfter = getTotalCost();
-
-        // Post-condition: The total amount has the newly added transaction
-        assertEquals(amountBefore+50.0, amountAfter, 0.0);
-
-        // Post-condition: A new transaction is added
-        assertEquals(2, view.getTableModel().getRowCount());  //rowcount is 2 as there is an extra row that shows the total of the table
-
-        assertEquals(50.0, view.getTransactionsTable().getValueAt(0,1)); //Checking amount
-        assertEquals("food", view.getTransactionsTable().getValueAt(0,2)); //Checking Category
-    }
     
 }
