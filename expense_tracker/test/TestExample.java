@@ -1,5 +1,6 @@
 // package test;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.text.ParseException;
@@ -174,6 +175,29 @@ public class TestExample {
         // Check the state of the UI widget (undo button)
         JButton undoButton = view.getUndoTransactionBtn();
         assertFalse("Undo button should be disabled when transactions list is empty", undoButton.isEnabled());
+    }
+
+    @Test
+    public void testInvalidInputHandling() {
+
+        // Pre-condition: List of transactions is empty
+        assertEquals(0, model.getTransactions().size());
+
+        // Pre-condition: Check the total amount remains unchanged
+        assertEquals(0.0, getTotalCost(), 0.01);
+
+        // Perform the action: Attempt to add a transaction with an invalid amount
+        assertFalse(controller.addTransaction(-50.0, "food"));
+
+        // Perform the action: Attempt to add a transaction with an invalid category
+        assertFalse(controller.addTransaction(50.0, ""));
+
+        // Post-condition: List of transactions and Total Cost remain unchanged
+        assertEquals(0, model.getTransactions().size());
+
+        // Check the total amount remains unchanged
+        assertEquals(0.0, getTotalCost(), 0.01);
+
     }
     
 }
