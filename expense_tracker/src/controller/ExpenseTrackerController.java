@@ -1,5 +1,6 @@
 package controller;
 
+import org.junit.Test;
 import view.ExpenseTrackerView;
 
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import javax.swing.JOptionPane;
 import model.ExpenseTrackerModel;
 import model.Transaction;
 import model.Filter.TransactionFilter;
+
+import static org.junit.Assert.assertEquals;
 
 public class ExpenseTrackerController {
   
@@ -82,10 +85,35 @@ public class ExpenseTrackerController {
     else{
       JOptionPane.showMessageDialog(view, "No filter applied");
       view.toFront();}
-
   }
 
+  @Test
+  public void testAddTransactionAndUpdateView() {
 
+    // Pre-condition: The table is empty
+    assertEquals(0, view.getTableModel().getRowCount());
+
+    // Perform the action: Add a transaction
+    double amount = 50.0;
+    String category = "food";
+//        assertTrue(controller.addTransaction(amount, category));
+
+    int rowCountBefore = view.getTableModel().getRowCount();
+    view.refreshTable(model.getTransactions());
+    int rowCountAfter = view.getTableModel().getRowCount();
+    // Post-condition: The table contains the added transaction
+    assertEquals(rowCountBefore+1, rowCountAfter);
+//        assertEquals(2, view.getTableModel().getRowCount());
+
+    System.out.println(view.getTransactionsTable().getValueAt(0,0));
+    System.out.println(view.getTransactionsTable().getValueAt(0,1));
+    // Check the contents of the table
+    assertEquals(1, view.getTransactionsTable().getValueAt(1, 0)); // Serial
+    assertEquals(50.0, view.getTransactionsTable().getValueAt(0, 1)); // Amount
+    assertEquals("food", view.getTransactionsTable().getValueAt(0, 2)); // Category
+
+    assertEquals(50.0, view.getTransactionsTable().getValueAt(1,3)); // Total Cost
+  }
 
 
 
