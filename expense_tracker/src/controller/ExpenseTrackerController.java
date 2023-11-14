@@ -85,6 +85,11 @@ public class ExpenseTrackerController {
 
   }
 
+  public Transaction getTransaction(int index)
+  {
+    return model.getTransactions().get(index);
+  }
+
 
 
 
