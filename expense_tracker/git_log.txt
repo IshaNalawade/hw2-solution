@@ -22,22 +22,6 @@ Date:   Mon Nov 13 20:25:54 2023 -0500
 
     Test case 1, Add Transaction
 
-commit d3a2c5123dce8e38a2565ca0b18430455ea7b021
-Author: Niti Mangwani <nitimangwani@NitiMangwani.local>
-Date:   Mon Nov 13 20:21:49 2023 -0500
-
-    Revert "Test case 1, Add Transaction"
-    
-    This reverts commit 377471e2beb6afb5ef329b93040ee105fc3266c2.
-
-commit e2f3f6e38695325f30d740a64e20f1b33957808a
-Author: Niti Mangwani <nitimangwani@NitiMangwani.local>
-Date:   Mon Nov 13 20:21:18 2023 -0500
-
-    Revert "spelling correction"
-    
-    This reverts commit f7cc37f2a99123932c1fde77c01c55104671d701.
-
 commit f7cc37f2a99123932c1fde77c01c55104671d701
 Author: Niti Mangwani <nitimangwani@NitiMangwani.local>
 Date:   Mon Nov 13 20:17:40 2023 -0500
