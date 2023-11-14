@@ -1,3 +1,15 @@
+commit 4a321c2da700b146693512f1401e98bb34616523
+Author: Niti Mangwani <nitimangwani@NitiMangwani.local>
+Date:   Mon Nov 13 23:10:57 2023 -0500
+
+    Updated README file with newly added functionalities
+
+commit d3b5b46de4538f9b05f0ee88388f9fd7f1538bc1
+Author: Niti Mangwani <nitimangwani@NitiMangwani.local>
+Date:   Mon Nov 13 23:00:45 2023 -0500
+
+    git log file added
+
 commit 0901f4250751aee5d9eeb1c565c62abfa99ea919
 Author: Niti Mangwani <nitimangwani@NitiMangwani.local>
 Date:   Mon Nov 13 22:58:30 2023 -0500
@@ -7,6 +19,34 @@ Date:   Mon Nov 13 22:58:30 2023 -0500
 commit 2c49094ff6ba336a6584953886dcaede47158aad
 Author: Niti Mangwani <nitimangwani@NitiMangwani.local>
 Date:   Mon Nov 13 20:25:54 2023 -0500
+
+    Test case 1, Add Transaction
+
+commit d3a2c5123dce8e38a2565ca0b18430455ea7b021
+Author: Niti Mangwani <nitimangwani@NitiMangwani.local>
+Date:   Mon Nov 13 20:21:49 2023 -0500
+
+    Revert "Test case 1, Add Transaction"
+    
+    This reverts commit 377471e2beb6afb5ef329b93040ee105fc3266c2.
+
+commit e2f3f6e38695325f30d740a64e20f1b33957808a
+Author: Niti Mangwani <nitimangwani@NitiMangwani.local>
+Date:   Mon Nov 13 20:21:18 2023 -0500
+
+    Revert "spelling correction"
+    
+    This reverts commit f7cc37f2a99123932c1fde77c01c55104671d701.
+
+commit f7cc37f2a99123932c1fde77c01c55104671d701
+Author: Niti Mangwani <nitimangwani@NitiMangwani.local>
+Date:   Mon Nov 13 20:17:40 2023 -0500
+
+    spelling correction
+
+commit 377471e2beb6afb5ef329b93040ee105fc3266c2
+Author: Niti Mangwani <nitimangwani@NitiMangwani.local>
+Date:   Mon Nov 13 20:16:42 2023 -0500
 
     Test case 1, Add Transaction
 
